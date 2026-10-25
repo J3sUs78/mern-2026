@@ -18,15 +18,14 @@ El cliente aporta el contexto del negocio y sus necesidades; el equipo convierte
 
 | Componente | Tecnología | Uso |
 |---|---|---|
-| Interfaz web | React 18, Vite, Tailwind CSS | Aplicación de página única adaptable a los flujos de clientes y personal |
-| API | Node.js y Express 4 | API REST y lógica de negocio |
-| Persistencia | MySQL/MariaDB 10.4, `mysql2` | Base de datos relacional para usuarios, catálogo, reservas, pedidos y movimientos de bodega |
+| Interfaz web | React, Vite, Tailwind CSS | Aplicación de página única adaptable a los flujos de clientes y personal |
+| API | Node.js y Express | API REST y lógica de negocio |
+| Persistencia | MySQL/MariaDB | Base de datos relacional para usuarios, catálogo, reservas, pedidos y movimientos de bodega |
 | Validación | Zod | Validación de datos en formularios y endpoints seleccionados |
 | Sesiones y permisos | JWT, cookies `httpOnly`, bcryptjs y RBAC | Autenticación, protección de credenciales y autorización por permisos |
 | Imágenes | Cloudinary | Almacenamiento de imágenes de productos y servicios |
 | Correo | Nodemailer con Gmail | Verificación de cuentas, recuperación de contraseña y notificaciones |
-| Mensajería | WhatsApp Business Cloud API (Meta) | Notificaciones configurables por WhatsApp |
-| Entorno local | Docker Compose | Ejecución local de MariaDB |
+
 
 ## Estructura organizacional del sistema
 
@@ -40,7 +39,7 @@ La aplicación representa las funciones de trabajo del negocio mediante roles y 
 | Bodeguero | Gestionar stock, registrar movimientos y confirmar entregas |
 | Funcionario | Consultar el catálogo y crear pedidos internos según sus permisos |
 
-Los permisos se asignan por recurso y acción (por ejemplo, `product:view` o `order:approve`). Las áreas operativas también pueden organizarse mediante departamentos y asignaciones de usuarios. La configuración de roles y permisos se administra desde el sistema.
+Los permisos se asignan por recurso y acción (RBAC). Las áreas operativas también pueden organizarse mediante departamentos y asignaciones de usuarios. La configuración de roles y permisos se administra desde el sistema.
 
 ## Principios de arquitectura y diseño
 
@@ -77,49 +76,5 @@ Los permisos se asignan por recurso y acción (por ejemplo, `product:view` o `or
 
 La documentación ampliada de arquitectura y funcionalidades está en [docs/contexto/README.md](docs/contexto/README.md). El [informe técnico](docs/InformeTecnico_JesusCastro_AndyMachuca.docx) contiene la definición del proyecto APT y sus fundamentos.
 
-## Inicio local
 
-Requisitos: Node.js 20 o superior, pnpm, Docker y Docker Compose.
 
-1. Instala las dependencias:
-
-   ```bash
-   pnpm install
-   ```
-
-2. Copia `.env.example` a `.env` y configura las variables de base de datos y `TOKEN_SECRET`. Añade las credenciales de Cloudinary, correo o WhatsApp solo si usarás esas integraciones.
-
-3. Inicia MariaDB:
-
-   ```bash
-   docker compose up -d
-   ```
-
-4. Crea la base `bodega_valerinur`, carga `db_bodega.sql` y aplica las migraciones SQL en orden. Antes de ejecutar `db_migracion_reservas_coherentes.sql`, revisa las instrucciones y posibles conflictos descritos en su encabezado.
-
-5. Inicia la API y el frontend:
-
-   ```bash
-   pnpm dev
-   ```
-
-Por defecto, la API escucha en `http://localhost:3000` y la aplicación Vite en `http://localhost:5173`. Para producción, `pnpm start` inicia la API y `pnpm --prefix client run build` genera los archivos del frontend.
-
-## Configuración
-
-Las variables disponibles están descritas en [.env.example](.env.example):
-
-- `TOKEN_SECRET`, `PORT`, `CLIENT_URL`, `CORS_ORIGINS`, `COOKIE_SAME_SITE` y `NODE_ENV`.
-- `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD` y `DB_DATABASE`.
-- Credenciales opcionales: `CLOUDINARY_NAME`, `CLOUD_API_KEY`, `CLOUD_API_SECRET`, `EMAIL_USER`, `EMAIL_PASS` y variables `WHATSAPP_*`.
-- Para un frontend desplegado, `VITE_API_URL` configura la URL de la API durante la compilación del cliente.
-
-No publiques el archivo `.env` ni credenciales reales. La configuración de ejemplo de Docker es solo para desarrollo local; cambia las credenciales antes de cualquier despliegue.
-
-## Documentación relacionada
-
-- [Requerimientos funcionales y no funcionales](docs/requerimientos.md)
-- [Contexto de arquitectura y funcionalidades](docs/contexto/README.md)
-- [Modelo de datos](docs/anexo-c-modelo-bd.md)
-- [Casos de prueba](docs/casos-de-prueba.md)
-- [Informe técnico de definición](docs/InformeTecnico_JesusCastro_AndyMachuca.docx)
