@@ -31,13 +31,7 @@ El cliente aporta el contexto del negocio y sus necesidades; el equipo convierte
 
 La aplicación representa las funciones de trabajo del negocio mediante roles y permisos granulares. El backend es la autoridad para conceder acceso; la interfaz también adapta las rutas y opciones visibles al usuario.
 
-| Actor / rol | Responsabilidad principal |
-|---|---|
-| Cliente | Registrarse, revisar el catálogo, crear pedidos, reservar horas y responder a propuestas de horario |
-| Administrador | Gestionar usuarios, roles, permisos, catálogo, agenda y operaciones del negocio |
-| Revisor | Revisar solicitudes, aprobar o rechazar pedidos y coordinar cambios de horario |
-| Bodeguero | Gestionar stock, registrar movimientos y confirmar entregas |
-| Funcionario | Consultar el catálogo y crear pedidos internos según sus permisos |
+
 
 Los permisos se asignan por recurso y acción (RBAC). Las áreas operativas también pueden organizarse mediante departamentos y asignaciones de usuarios. La configuración de roles y permisos se administra desde el sistema.
 
