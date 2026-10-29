@@ -10,6 +10,10 @@ El proyecto responde a la necesidad de reducir la dispersión de información y 
 
 ## Equipo de desarrollo
 
+- **Jesús Castro:** Product Owner
+- **Andy Machuca:** Scrum Master
+- **Jesús Castro:** Development Team
+
 El informe técnico de definición identifica a **Jesús Castro y Andy Machuca** como estudiantes responsables del Proyecto APT. El plan de trabajo asigna actividades de análisis, diseño, desarrollo, validación y documentación a ambos, con algunas tareas de implementación individual distribuidas entre los integrantes. El trabajo se organiza con un enfoque ágil basado en Scrum, adaptado al contexto académico, mediante ciclos iterativos y priorización de funcionalidades.
 
 El cliente aporta el contexto del negocio y sus necesidades; el equipo convierte esos procesos en requerimientos, reglas de negocio y funcionalidades de la plataforma. El código se mantiene bajo control de versiones con Git y GitHub.
