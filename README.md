@@ -55,7 +55,7 @@ Los permisos se asignan por recurso y acción (RBAC). Las áreas operativas tamb
 │   └── utils/              # Herramientas de apoyo e integraciones
 ├── docs/                   # Requerimientos, informes y documentación técnica
 ├── db_bodega.sql           # Esquema inicial de la base de datos
-
+```
 
 ## Principios de arquitectura y diseño
 
