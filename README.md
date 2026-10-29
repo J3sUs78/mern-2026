@@ -35,6 +35,28 @@ La aplicación representa las funciones de trabajo del negocio mediante roles y 
 
 Los permisos se asignan por recurso y acción (RBAC). Las áreas operativas también pueden organizarse mediante departamentos y asignaciones de usuarios. La configuración de roles y permisos se administra desde el sistema.
 
+
+## Organización del repositorio
+
+```text
+.
+├── client/                 # Aplicación React y configuración de Vite
+│   └── src/
+│       ├── api/            # Comunicación HTTP por recurso
+│       ├── components/     # Componentes de interfaz
+│       ├── context/        # Estado por dominio
+│       ├── pages/          # Vistas y rutas
+│       └── utils/          # Utilidades de interfaz
+├── server/                 # API Express
+│   ├── controllers/        # Componentes de la aplicación
+│   ├── middlewares/        # Funciones de apoyo para solicitudes
+│   ├── routes/             # Rutas de comunicación de la API
+│   ├── schemas/            # Definiciones de validación
+│   └── utils/              # Herramientas de apoyo e integraciones
+├── docs/                   # Requerimientos, informes y documentación técnica
+├── db_bodega.sql           # Esquema inicial de la base de datos
+
+
 ## Principios de arquitectura y diseño
 
 - **Arquitectura cliente-servidor:** React consume la API REST de Express; solo el backend accede a la base de datos.
